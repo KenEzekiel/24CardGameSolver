@@ -413,6 +413,27 @@ void solver(vector<float> list)
                             }
                         }
                     }
+                    for (s = 0; s < 4; s++)
+                    {
+                        hasil2 = op(hasil1, num4, s);
+                        for (t = 0; t < 4; t++)
+                        {
+                            done = op(num1, hasil2, t);
+                            if (done == -1)
+                            {
+                                continue;
+                            }
+                            if (done == 24)
+                            {
+                                solution = stringbuilder(num2, num3, r);
+                                // cout << "solution temp: " << solution << endl;
+                                solution = stringbuilderfromstring(solution, num4, s);
+                                solution = stringbuilderfromstring(num1, solution, t);
+                                solutions.push_back(solution);
+                                // (num1 .. num2) .. (num3 .. num4)
+                            }
+                        }
+                    }
                 }
 
                 temp2.push_back(num3);
@@ -420,6 +441,7 @@ void solver(vector<float> list)
 
             temp1.push_back(num2);
         }
+
         local.push_back(num1);
     }
     for (auto &x : solutions)
