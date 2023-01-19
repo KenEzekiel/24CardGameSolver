@@ -4,6 +4,8 @@
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
+#include <ctime>
+#include <chrono>
 
 using namespace std;
 
@@ -78,6 +80,7 @@ vector<double> generateRandom()
     // LOCAL DICTIONARY
     vector<double> output;
     double d;
+    srand(time(NULL));
     // ALGORITHM
 
     for (int i = 0; i < 4; i++)
@@ -337,8 +340,6 @@ bool stringChecker(vector<string> list, string str)
     return true;
 }
 
-// TODO : Time of execution
-
 void solver(vector<double> list)
 {
     // LOCAL DICTIONARY
@@ -355,12 +356,15 @@ void solver(vector<double> list)
 
     string solution;
 
+    // const clock_t begintime = clock();
+
     // ALGORITHM
     local = list;
+    auto t_start = chrono::high_resolution_clock::now();
     // pick card 1 from the list
     for (i = 0; i < 4; i++)
     {
-        cout << "i: " << i << endl;
+        // cout << "i: " << i << endl;
         num1 = local.front();
         local.erase(local.begin());
         temp1 = local;
@@ -631,6 +635,10 @@ void solver(vector<double> list)
 
         local.push_back(num1);
     }
+    // cout << "executed in " << float(clock() - begintime) << endl;
+    auto t_end = chrono::high_resolution_clock::now();
+    double elapsed_time_ms = chrono::duration<double, std::milli>(t_end - t_start).count();
+    cout << "executed in " << elapsed_time_ms << " ms" << endl;
     for (auto &x : solutions)
     {
         cout << x << endl;
