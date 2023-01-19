@@ -27,7 +27,7 @@ void translateCards(vector<double> *input, const vector<char> cards)
     for (auto &x : cards)
     {
         string str(1, x);
-        int num = atoi(str.c_str());
+        double num = atoi(str.c_str());
         if (num >= 2 && num <= 10)
         {
             input->push_back(num);
@@ -208,7 +208,7 @@ double op(double num1, double num2, int opcode)
     }
     else
     {
-        return 0;
+        return -999;
     }
 }
 
@@ -439,7 +439,7 @@ void solver(vector<double> list)
                         hasil2 = op(num3, hasil1, m);
                         // pick card 4 (last card on list)
                         num4 = temp2.front();
-                        // operation on ((card 1 card 2) card 3) and card 4
+                        // operation on (card 3 (card 1 card 2)) and card 4
                         for (n = 0; n < 4; n++)
                         {
                             // cout << "n: " << n << endl;
@@ -458,7 +458,7 @@ void solver(vector<double> list)
                             }
                         }
                         // can be commented out
-                        // operation on card 4 and ((card 1 card 2) card 3)
+                        // operation on card 4 and (card 3 (card 1 card 2))
                         for (n = 0; n < 4; n++)
                         {
                             // cout << "n: " << n << endl;
@@ -466,12 +466,14 @@ void solver(vector<double> list)
                             if (done == 24)
                             {
                                 solution = stringbuilder(num1, num2, k);
-                                solution = stringbuilderfromstring(solution, num3, m);
+                                solution = stringbuilderfromstring(num3, solution, m);
                                 solution = stringbuilderfromstring(num4, solution, n);
                                 if (stringChecker(solutions, solution))
                                 {
                                     // solution += " = ";
                                     // solution += to_string(done);
+                                    // cout << num4 << " " << n << " " << hasil2 << " " << num1 << k << num2 << m << num3 << endl;
+                                    // cout << solution << endl;
                                     solutions.push_back(solution);
                                 }
                             }
@@ -561,6 +563,7 @@ void solver(vector<double> list)
                             }
                             if (done == 24)
                             {
+
                                 solution = stringbuilder(num2, num3, r);
                                 // cout << "solution temp: " << solution << endl;
                                 solution = stringbuilderfromstring(num1, solution, s);
@@ -570,7 +573,7 @@ void solver(vector<double> list)
                                     // solution += " = ";
                                     // solution += to_string(done);
                                     solutions.push_back(solution);
-                                } // (num1 .. num2) .. (num3 .. num4)
+                                }
                             }
                         }
                     }
@@ -583,6 +586,7 @@ void solver(vector<double> list)
                         for (t = 0; t < 4; t++)
                         {
                             done = op(num1, hasil2, t);
+
                             if (done == -999)
                             {
                                 continue;
@@ -598,7 +602,7 @@ void solver(vector<double> list)
                                     // solution += " = ";
                                     // solution += to_string(done);
                                     solutions.push_back(solution);
-                                } // (num1 .. num2) .. (num3 .. num4)
+                                }
                             }
                         }
                         // can be commented out
@@ -621,7 +625,7 @@ void solver(vector<double> list)
                                     // solution += " = ";
                                     // solution += to_string(done);
                                     solutions.push_back(solution);
-                                } // (num1 .. num2) .. (num3 .. num4)
+                                }
                             }
                         }
                     }
@@ -643,7 +647,7 @@ void solver(vector<double> list)
     {
         cout << x << endl;
     }
-    cout << solutions.size();
+    cout << solutions.size() << " solutions found" << endl;
 }
 
 int main()
@@ -654,10 +658,9 @@ int main()
 
     solver(ans);
 
-    // TODO : fix kenapa -24 jadi 24 di kode
-    // double a = op(2, 4, 1);
-    // double b = op(a, 6, 1);
-    // double c = op(3, b, 2);
+    // double a = op(3, 2, 1);
+    // double b = op(a, 6, 3);
+    // double c = op(4, b, 2);
 
     // cout << a << endl
     //      << b << endl
@@ -670,3 +673,5 @@ int main()
 
     return 0;
 }
+
+// TODO : run.bat, laporan etc + sesuain lg sm spek + output ke file
