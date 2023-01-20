@@ -89,6 +89,7 @@ void printCards(const vector<string> cards)
     // LOCAL DICTIONARY
     int i;
     // ALGORITHM
+    cout << "Cards: ";
     for (auto &x : cards)
     {
         std::cout << x << " ";
@@ -101,6 +102,7 @@ void printList(const vector<double> list)
     // LOCAL DICTIONARY
     int i;
     // ALGORITHM
+    cout << "List: ";
     for (i = 0; i < list.size(); i++)
     {
         std::cout << list.at(i) << " ";
@@ -741,7 +743,7 @@ int main()
 {
     vector<double> ans;
     getInput(&ans);
-    printList(ans);
+    // printList(ans);
 
     solver(ans);
 
@@ -761,4 +763,4 @@ int main()
     return 0;
 }
 
-// TODO : run.bat, laporan etc + sesuain lg sm spek + output ke file
+// TODO : laporan etc + sesuain lg sm spek

@@ -2,6 +2,7 @@
 import os
 from pathlib import Path
 
+print("--------------------------- CHECKER ---------------------------\n")
 cwd = os.getcwd()
 folder = 'test'
 directory = os.path.join(cwd, folder)
@@ -9,7 +10,7 @@ directory = os.path.join(cwd, folder)
 for filename in os.listdir(directory):
     f = os.path.join(directory, filename)
     if os.path.isfile(f):
-        print(f)
+        print("file:", f)
         string = Path(f).read_text()
 # string = """((10 + (5 * 5)) - 11)
 # (10 + ((5 * 5) - 11))
@@ -34,7 +35,7 @@ for filename in os.listdir(directory):
         set_arr = set(arr)
         print("length of unique strings:", len(set_arr))
         print("length of array of solutions:", len(arr))
-        print("number of errors", cnt)
+        print("number of errors:", cnt, "\n")
 
         for i in err:
             print(i)
