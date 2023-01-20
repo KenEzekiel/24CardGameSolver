@@ -4,3 +4,6 @@ testalgo1.exe -> bug pembagian fixed
 testalgo2.exe -> solusi unik (bug di pembagian)
 testalgo3.exe -> solusi ditambah yang komutatif
 testalgo4.exe -> solusi ada yang dobel
+testalgo 5-7.exe -> cuma tweak sedikit sama bug fixed
+
+main.exe -> final
