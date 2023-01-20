@@ -6,6 +6,7 @@
   - [Daftar Isi](#daftar-isi)
   - [24 Card Game Solver](#24-card-game-solver)
   - [Deskripsi Permasalahan](#deskripsi-permasalahan)
+  - [Algoritma yang digunakan](#algoritma-yang-digunakan)
   - [Struktur Program](#struktur-program)
   - [Menjalankan Program](#menjalankan-program)
   - [Libraries Used](#libraries-used)
@@ -22,6 +23,17 @@ Permainan kartu 24 adalah permainan kartu aritmatika dengan tujuan mencari cara 
 Pada awal permainan moderator atau salah satu pemain mengambil 4 kartu dari dek yang sudah dikocok secara random. Permainan berakhir ketika pemain berhasil menemukan solusi untuk membuat kumpulan nilainya menjadi 24. Pengubahan nilai tersebut dapat dilakukan menggunakan operasi dasar matematika penjumlahan (+), pengurangan (-), perkalian (×), divisi (/) dan tanda kurung ( () ). Tiap kartu harus digunakan tepat sekali dan urutan penggunaannya bebas.
 
 Projek ini adalah membuat suatu algoritma dengan pendekatan *brute force* untuk menyelesaikan permainan kartu 24.
+
+## Algoritma yang digunakan
+
+Pencarian solusi permainan kartu 24 dilakukan dengan pendekatan *brute force*, secara intuisi, algoritma yang dijalankan adalah sebagai berikut:
+
+
+* misalkan a b c d sebagai 4 kartu/angka yang dipilih
+* lakukan permutasi dari 4 kartu jika dipilih 2 kartu, sehingga didapatkan 3 angka (mis: (a .. b), sudah menjadi 1 angka), lalu operasikan (4 operasi)
+* dari semua permutasi * operasi tersebut, lakukan permutasi kembali dari 3 angka jika dipilih 2 angka, lalu operasikan kembali
+* sisa 2 angka yang terakhir akan menentukan hasil akhir adalah 24 atau tidak jika dioperasikan
+
 
 ## Struktur Program
 
