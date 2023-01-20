@@ -31,8 +31,8 @@ Pencarian solusi permainan kartu 24 dilakukan dengan pendekatan *brute force*, s
 
 * misalkan a b c d sebagai 4 kartu/angka yang dipilih
 * lakukan permutasi dari 4 kartu jika dipilih 2 kartu, sehingga didapatkan 3 angka (mis: (a .. b), sudah menjadi 1 angka), lalu operasikan (4 operasi)
-* dari semua permutasi * operasi tersebut, lakukan permutasi kembali dari 3 angka jika dipilih 2 angka, lalu operasikan kembali
-* sisa 2 angka yang terakhir akan menentukan hasil akhir adalah 24 atau tidak jika dioperasikan
+* untuk semua permutasi * operasi tersebut, lakukan permutasi kembali dari 3 angka jika dipilih 2 angka, lalu operasikan (4 operasi) kembali (mis: ((a .. b) .. c) atau (c .. d))
+* sisa 2 angka yang terakhir akan menentukan hasil akhir adalah 24 atau tidak jika dioperasikan (4 operasi)
 
 
 ## Struktur Program
