@@ -1,4 +1,4 @@
-# paste the output of the solutions intro string variable and then run python src/checker.py from the root directory
+
 import os
 from pathlib import Path
 
