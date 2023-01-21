@@ -9,6 +9,8 @@
 
 using namespace std;
 
+// Miscellaneous
+
 bool checkCard(string card)
 {
     vector<string> listofcard = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
@@ -216,6 +218,8 @@ void getInput(vector<double> *input)
     }
 }
 
+// Algorithms
+
 double op(double num1, double num2, int opcode)
 {
     if (opcode == 0)
@@ -391,9 +395,9 @@ void solver(vector<double> list)
 
     string solution;
 
-    char save;
+    char save, name;
 
-    string filename;
+    string filename, nameoffile;
 
     // const clock_t begintime = clock();
 
@@ -696,32 +700,47 @@ void solver(vector<double> list)
 
     if (save == 'y')
     {
+        std::cout << "rename file? (y/n) " << endl;
+
+        cin >> name;
+
         filename += "test/";
-        for (auto &x : list)
+
+        if (name == 'y')
         {
-            if (x == 1)
+            std::cout << "filename: ";
+            cin >> nameoffile;
+            filename += nameoffile;
+        }
+        else
+        {
+            for (auto &x : list)
             {
-                filename += "A ";
-            }
-            else if (x == 11)
-            {
-                filename += "J ";
-            }
-            else if (x == 12)
-            {
-                filename += "Q ";
-            }
-            else if (x == 13)
-            {
-                filename += "K ";
-            }
-            else
-            {
-                int num = x;
-                filename += to_string(num);
-                filename += " ";
+                if (x == 1)
+                {
+                    filename += "A ";
+                }
+                else if (x == 11)
+                {
+                    filename += "J ";
+                }
+                else if (x == 12)
+                {
+                    filename += "Q ";
+                }
+                else if (x == 13)
+                {
+                    filename += "K ";
+                }
+                else
+                {
+                    int num = x;
+                    filename += to_string(num);
+                    filename += " ";
+                }
             }
         }
+
         filename += ".txt";
         ofstream fileout(filename);
 
@@ -730,6 +749,33 @@ void solver(vector<double> list)
             fileout << x;
             fileout << "\n";
         }
+
+        for (auto &x : list)
+        {
+            if (x == 1)
+            {
+                fileout << "A ";
+            }
+            else if (x == 11)
+            {
+                fileout << "J ";
+            }
+            else if (x == 12)
+            {
+                fileout << "Q ";
+            }
+            else if (x == 13)
+            {
+                fileout << "K ";
+            }
+            else
+            {
+                int num = x;
+                fileout << to_string(num);
+                fileout << " ";
+            }
+        }
+        fileout << "\n";
 
         fileout << solutions.size();
 
@@ -746,19 +792,6 @@ int main()
     // printList(ans);
 
     solver(ans);
-
-    // double a = op(3, 2, 1);
-    // double b = op(a, 6, 3);
-    // double c = op(4, b, 2);
-
-    // std::cout << a << endl
-    //      << b << endl
-    //      << c << endl;
-
-    // if (c == 24)
-    // {
-    //     std::cout << c << endl;
-    // }
 
     return 0;
 }

@@ -12,15 +12,9 @@ for filename in os.listdir(directory):
     if os.path.isfile(f):
         print("file:", f)
         string = Path(f).read_text()
-# string = """((10 + (5 * 5)) - 11)
-# (10 + ((5 * 5) - 11))
-# (((5 * 5) - 11) + 10)
-# ((10 - 11) + (5 * 5))
-# (10 - (11 - (5 * 5)))
-# ((5 * 5) - (11 - 10))
-# (((5 * 5) + 10) - 11)
-# ((5 * 5) + (10 - 11))"""
+
         arr = string.split("\n")
+        del arr[-1]
         del arr[-1]
         cnt = 0
         err = []
