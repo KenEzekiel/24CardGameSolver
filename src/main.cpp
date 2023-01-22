@@ -131,8 +131,8 @@ vector<double> generateRandom()
 void getInput(vector<double> *input)
 {
     // LOCAL DICTIONARY
-    char ans;
-    string c1, c2, c3, c4;
+    string ans;
+    string c, c1, c2, c3, c4;
     vector<string> cards;
 
     ifstream fin;
@@ -148,20 +148,38 @@ void getInput(vector<double> *input)
     // input selection
     std::cout << "k : keyboard f : file r : random" << endl;
     std::cout << "Input? (k/f/r) (default: r) " << endl;
-    cin >> ans;
+    getline(cin, ans);
 
     // from keyboard
-    if (ans == 'k')
+    if (ans == "k")
     {
         // loop until valid
         while (condition)
         {
             std::cout << "Enter 4 cards: ";
-            cin >> c1;
-            cin >> c2;
-            cin >> c3;
-            cin >> c4;
-            if (checkCard(c1) && checkCard(c2) && checkCard(c3) && checkCard(c4))
+            getline(cin, c);
+
+            stringstream cc(c);
+
+            string ctemp;
+
+            int cnt = 0;
+            cards.clear();
+            while (cnt < 4 && cc >> ctemp)
+            {
+                if (checkCard(ctemp))
+                {
+                    // input is put to a vector
+                    cards.push_back(ctemp);
+                }
+                else
+                {
+                    break;
+                }
+                cnt++;
+            }
+
+            if (cnt == 4)
             {
                 condition = false;
             }
@@ -172,17 +190,12 @@ void getInput(vector<double> *input)
         }
 
         // std::cout << c1 << " " << c2 << " " << c3 << " " << c4 << endl;
-        // input is put to a vector
-        cards.push_back(c1);
-        cards.push_back(c2);
-        cards.push_back(c3);
-        cards.push_back(c4);
         printCards(cards);
         // translate cards to integer
         translateCards(input, cards);
     }
     // from file
-    else if (ans == 'f')
+    else if (ans == "f")
     {
         // open file
         fin.open("src/input.txt");
@@ -795,5 +808,3 @@ int main()
 
     return 0;
 }
-
-// TODO : laporan etc + sesuain lg sm spek
